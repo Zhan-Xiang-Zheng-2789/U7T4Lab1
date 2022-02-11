@@ -321,7 +321,7 @@ public class ArrayListAlgorithms
      */
     public static ArrayList<Integer> modes(int[] numList)
     {
-        int mondeLengthCount = 1;
+        int maxModeLength = 1;
         ArrayList<Integer> modes = new ArrayList<>();
 
         for (int i = 0; i < numList.length; i++)
@@ -334,13 +334,17 @@ public class ArrayListAlgorithms
                     count++;
                 }
             }
-            if(count > mondeLengthCount)
+            if(count > maxModeLength)
             {
-                mondeLengthCount = count;
+                maxModeLength = count;
                 modes.clear();
-                modes.add(numList)
+                modes.add(numList[i]);
+            }
+            else if (count == maxModeLength && count != 1)
+            {
+                modes.add(numList[i]);
             }
         }
-
+        return modes;
     }
 }
